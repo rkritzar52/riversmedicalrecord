@@ -1,205 +1,180 @@
-// Function to handle form submissions and dynamic list creation
-document.addEventListener("DOMContentLoaded", function() {
-    // Hospital Visits Section
-    const hospitalForm = document.getElementById("hospital-form");
-    const hospitalList = document.getElementById("hospital-list");
-    hospitalForm.addEventListener("submit", handleHospitalSubmit);
+// Function to show the form based on the section clicked
+function showForm(section) {
+    const sectionId = section + '-questions';
+    const messageId = section + '-message';
+    const formId = section + '-form';
 
-    // Vaccination Section
-    const vaccinationForm = document.getElementById("vaccination-form");
-    const vaccinationList = document.getElementById("vaccination-list");
-    vaccinationForm.addEventListener("submit", handleVaccinationSubmit);
+    // Hide the message and show the form
+    document.getElementById(messageId).style.display = 'none';
+    document.getElementById(sectionId).style.display = 'block';
+}
 
-    // Medication Section
-    const medicationForm = document.getElementById("medication-form");
-    const medicationList = document.getElementById("medication-list");
-    medicationForm.addEventListener("submit", handleMedicationSubmit);
+// Function to show the anxiety form
+function showAnxietyForm() {
+    document.getElementById('anxiety-section').style.display = 'block';
+    document.getElementById('anxiety-questions').style.display = 'block';
+    document.getElementById('anxiety-message').style.display = 'none';
+}
 
-    // Implants Section
-    const implantForm = document.getElementById("implant-form");
-    const implantList = document.getElementById("implant-list");
-    implantForm.addEventListener("submit", handleImplantSubmit);
+// Function to show the depression form
+function showDepressionForm() {
+    document.getElementById('depression-section').style.display = 'block';
+    document.getElementById('depression-questions').style.display = 'block';
+    document.getElementById('depression-message').style.display = 'none';
+}
 
-    // Allergy Section
-    const allergyForm = document.getElementById("allergy-form");
-    const allergyList = document.getElementById("allergy-list");
-    allergyForm.addEventListener("submit", handleAllergySubmit);
-
-    // Depression Questionnaire Section
-    const depressionForm = document.getElementById("depression-form");
-    depressionForm.addEventListener("submit", handleDepressionSubmit);
-
-    // Anxiety Questionnaire Section
-    const anxietyForm = document.getElementById("anxiety-form");
-    anxietyForm.addEventListener("submit", handleAnxietySubmit);
-
-    // Function to handle Hospital Form submission
-    function handleHospitalSubmit(event) {
-        event.preventDefault();
-
-        const date = event.target.querySelector('input[name="visit-date"]').value;
-        const hospitalName = event.target.querySelector('input[name="hospital-name"]').value;
-        const reason = event.target.querySelector('textarea[name="visit-reason"]').value;
-
-        const hospitalItem = document.createElement("div");
-        hospitalItem.innerHTML = `
-            <p>Date: ${date}</p>
-            <p>Hospital: ${hospitalName}</p>
-            <p>Reason: ${reason}</p>
-            <button onclick="deleteItem(this)">Delete</button>
-            <button onclick="editItem(this)">Edit</button>
-        `;
-        hospitalList.appendChild(hospitalItem);
-
-        // Reset the form after submission
-        hospitalForm.reset();
-    }
-
-    // Function to handle Vaccination Form submission
-    function handleVaccinationSubmit(event) {
-        event.preventDefault();
-
-        const vaccineName = event.target.querySelector('input[name="vaccine-name"]').value;
-        const date = event.target.querySelector('input[name="vaccine-date"]').value;
-        const administeredBy = event.target.querySelector('input[name="administered-by"]').value;
-
-        const vaccinationItem = document.createElement("div");
-        vaccinationItem.innerHTML = `
-            <p>Vaccine: ${vaccineName}</p>
-            <p>Date: ${date}</p>
-            <p>Administered By: ${administeredBy}</p>
-            <button onclick="deleteItem(this)">Delete</button>
-            <button onclick="editItem(this)">Edit</button>
-        `;
-        vaccinationList.appendChild(vaccinationItem);
-
-        vaccinationForm.reset();
-    }
-
-    // Function to handle Medication Form submission
-    function handleMedicationSubmit(event) {
-        event.preventDefault();
-
-        const medicationName = event.target.querySelector('input[name="medication-name"]').value;
-        const dosage = event.target.querySelector('input[name="dosage"]').value;
-
-        const medicationItem = document.createElement("div");
-        medicationItem.innerHTML = `
-            <p>Medication: ${medicationName}</p>
-            <p>Dosage: ${dosage}</p>
-            <button onclick="deleteItem(this)">Delete</button>
-            <button onclick="editItem(this)">Edit</button>
-        `;
-        medicationList.appendChild(medicationItem);
-
-        medicationForm.reset();
-    }
-
-    // Function to handle Implant Form submission
-    function handleImplantSubmit(event) {
-        event.preventDefault();
-
-        const implantType = event.target.querySelector('input[name="implant-type"]').value;
-        const date = event.target.querySelector('input[name="implant-date"]').value;
-
-        const implantItem = document.createElement("div");
-        implantItem.innerHTML = `
-            <p>Implant Type: ${implantType}</p>
-            <p>Date: ${date}</p>
-            <button onclick="deleteItem(this)">Delete</button>
-            <button onclick="editItem(this)">Edit</button>
-        `;
-        implantList.appendChild(implantItem);
-
-        implantForm.reset();
-    }
-
-    // Function to handle Allergy Form submission
-    function handleAllergySubmit(event) {
-        event.preventDefault();
-
-        const allergen = event.target.querySelector('input[name="allergen"]').value;
-        const reaction = event.target.querySelector('input[name="reaction-severity"]').value;
-
-        const allergyItem = document.createElement("div");
-        allergyItem.innerHTML = `
-            <p>Allergen: ${allergen}</p>
-            <p>Reaction Severity: ${reaction}</p>
-            <button onclick="deleteItem(this)">Delete</button>
-            <button onclick="editItem(this)">Edit</button>
-        `;
-        allergyList.appendChild(allergyItem);
-
-        allergyForm.reset();
-    }
-
-    // Function to handle Depression Questionnaire
-    function handleDepressionSubmit(event) {
-        event.preventDefault();
-        const responses = Array.from(event.target.querySelectorAll('input[type="radio"]:checked'));
-        let score = 0;
-
-        responses.forEach(response => {
-            score += parseInt(response.value);
-        });
-
-        const result = calculateDepressionRisk(score);
-        displayRiskLevel(result, "depression-result");
-    }
-
-    // Function to handle Anxiety Questionnaire
-    function handleAnxietySubmit(event) {
-        event.preventDefault();
-        const responses = Array.from(event.target.querySelectorAll('input[type="radio"]:checked'));
-        let score = 0;
-
-        responses.forEach(response => {
-            score += parseInt(response.value);
-        });
-
-        const result = calculateAnxietyRisk(score);
-        displayRiskLevel(result, "anxiety-result");
-    }
-
-    // Function to calculate Depression Risk Level
-    function calculateDepressionRisk(score) {
-        if (score >= 0 && score <= 4) return "Minimal";
-        if (score >= 5 && score <= 9) return "Mild";
-        if (score >= 10 && score <= 14) return "Moderate";
-        if (score >= 15 && score <= 19) return "Moderately Severe";
-        return "Severe";
-    }
-
-    // Function to calculate Anxiety Risk Level
-    function calculateAnxietyRisk(score) {
-        if (score >= 0 && score <= 4) return "Minimal";
-        if (score >= 5 && score <= 9) return "Mild";
-        if (score >= 10 && score <= 14) return "Moderate";
-        return "Severe";
-    }
-
-    // Function to display the Risk Level
-    function displayRiskLevel(result, resultElementId) {
-        const resultElement = document.getElementById(resultElementId);
-        resultElement.innerHTML = `<p>Risk Level: ${result}</p>`;
-    }
-
-    // Delete Item Function
-    window.deleteItem = function (button) {
-        const item = button.parentElement;
-        item.remove();
-    };
-
-    // Edit Item Function
-    window.editItem = function (button) {
-        const item = button.parentElement;
-        const inputs = item.querySelectorAll('p');
-        
-        // Example of how to fill inputs for editing
-        const editedText = prompt("Edit the item:", inputs[0].innerText); // Just an example, you may need to fill it with other fields
-
-        if (editedText !== null) {
-            inputs[0].innerText = editedText; // Change the first input's text to the edited one
+// Function to submit the anxiety questionnaire
+function submitAnxietyQuestionnaire() {
+    const responses = [];
+    for (let i = 1; i <= 10; i++) {
+        const response = document.querySelector(`input[name="anxiety${i}"]:checked`);
+        if (response) {
+            responses.push({
+                question: i,
+                answer: response.value
+            });
+        } else {
+            alert(`Please answer question ${i}.`);
+            return;
         }
-    };
-});
+    }
+
+    // Save responses (example, could be saved to a database or local storage)
+    console.log('Anxiety Responses:', responses);
+    alert('Anxiety Questionnaire Submitted');
+    resetForm('anxiety');
+}
+
+// Function to submit the depression questionnaire
+function submitDepressionQuestionnaire() {
+    const responses = [];
+    for (let i = 1; i <= 7; i++) {
+        const response = document.querySelector(`input[name="depression${i}"]:checked`);
+        if (response) {
+            responses.push({
+                question: i,
+                answer: response.value
+            });
+        } else {
+            alert(`Please answer question ${i}.`);
+            return;
+        }
+    }
+
+    // Save responses (example, could be saved to a database or local storage)
+    console.log('Depression Responses:', responses);
+    alert('Depression Questionnaire Submitted');
+    resetForm('depression');
+}
+
+// Function to reset the form and hide questions
+function resetForm(section) {
+    const sectionId = section + '-questions';
+    const messageId = section + '-message';
+
+    // Hide questions and show message
+    document.getElementById(sectionId).style.display = 'none';
+    document.getElementById(messageId).style.display = 'block';
+
+    // Reset radio button selections
+    const radios = document.querySelectorAll(`input[name^="${section}"]`);
+    radios.forEach(radio => {
+        radio.checked = false;
+    });
+}
+
+// Function to update the section with submitted data
+function updateSectionData(section, data) {
+    const listElement = document.getElementById(section + '-list');
+    const newItem = document.createElement('div');
+    newItem.classList.add('data-item');
+    newItem.textContent = data;
+    listElement.appendChild(newItem);
+}
+
+// Function to handle adding data for other sections (hospital, vaccination, etc.)
+function addData(section, data) {
+    const listElement = document.getElementById(section + '-list');
+    const newItem = document.createElement('div');
+    newItem.classList.add('data-item');
+    newItem.textContent = data;
+    listElement.appendChild(newItem);
+
+    // Hide the form and show the success message
+    document.getElementById(section + '-message').style.display = 'none';
+    document.getElementById(section + '-list').style.display = 'block';
+}
+
+// Example of how data might be added from the form (like hospital data)
+function addHospitalData() {
+    const hospitalData = document.getElementById('hospital-input').value;
+    if (hospitalData) {
+        addData('hospital', hospitalData);
+    } else {
+        alert('Please enter hospital data.');
+    }
+}
+
+// Example for other sections (vaccination, medication, etc.)
+function addVaccinationData() {
+    const vaccinationData = document.getElementById('vaccination-input').value;
+    if (vaccinationData) {
+        addData('vaccination', vaccinationData);
+    } else {
+        alert('Please enter vaccination data.');
+    }
+}
+
+function addMedicationData() {
+    const medicationData = document.getElementById('medication-input').value;
+    if (medicationData) {
+        addData('medication', medicationData);
+    } else {
+        alert('Please enter medication data.');
+    }
+}
+
+function addImplantData() {
+    const implantData = document.getElementById('implant-input').value;
+    if (implantData) {
+        addData('implant', implantData);
+    } else {
+        alert('Please enter implant data.');
+    }
+}
+
+function addAllergyData() {
+    const allergyData = document.getElementById('allergy-input').value;
+    if (allergyData) {
+        addData('allergy', allergyData);
+    } else {
+        alert('Please enter allergy data.');
+    }
+}
+
+function addAppointmentData() {
+    const appointmentData = document.getElementById('appointment-input').value;
+    if (appointmentData) {
+        addData('appointment', appointmentData);
+    } else {
+        alert('Please enter appointment data.');
+    }
+}
+
+function addDisorderData() {
+    const disorderData = document.getElementById('disorder-input').value;
+    if (disorderData) {
+        addData('disorder', disorderData);
+    } else {
+        alert('Please enter disorder data.');
+    }
+}
+
+function addInsuranceData() {
+    const insuranceData = document.getElementById('insurance-input').value;
+    if (insuranceData) {
+        addData('insurance', insuranceData);
+    } else {
+        alert('Please enter insurance data.');
+    }
+}
