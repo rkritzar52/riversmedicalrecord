@@ -39,8 +39,8 @@ function submitAnxietyQuestionnaire() {
         }
     }
 
-    // Save responses (example, could be saved to a database or local storage)
-    console.log('Anxiety Responses:', responses);
+    // Display the responses in a list
+    updateSectionData('anxiety', responses);
     alert('Anxiety Questionnaire Submitted');
     resetForm('anxiety');
 }
@@ -61,8 +61,8 @@ function submitDepressionQuestionnaire() {
         }
     }
 
-    // Save responses (example, could be saved to a database or local storage)
-    console.log('Depression Responses:', responses);
+    // Display the responses in a list
+    updateSectionData('depression', responses);
     alert('Depression Questionnaire Submitted');
     resetForm('depression');
 }
@@ -86,95 +86,76 @@ function resetForm(section) {
 // Function to update the section with submitted data
 function updateSectionData(section, data) {
     const listElement = document.getElementById(section + '-list');
-    const newItem = document.createElement('div');
-    newItem.classList.add('data-item');
-    newItem.textContent = data;
-    listElement.appendChild(newItem);
+
+    // If no data element exists, create it
+    if (!listElement) {
+        const newListElement = document.createElement('div');
+        newListElement.id = section + '-list';
+        document.getElementById(section + '-section').appendChild(newListElement);
+    }
+
+    // Create a new list item for each response
+    data.forEach(item => {
+        const newItem = document.createElement('div');
+        newItem.classList.add('data-item');
+        newItem.innerHTML = `Question ${item.question}: ${item.answer}`;
+        document.getElementById(section + '-list').appendChild(newItem);
+    });
 }
 
 // Function to handle adding data for other sections (hospital, vaccination, etc.)
-function addData(section, data) {
-    const listElement = document.getElementById(section + '-list');
-    const newItem = document.createElement('div');
-    newItem.classList.add('data-item');
-    newItem.textContent = data;
-    listElement.appendChild(newItem);
+function addData(section, inputId) {
+    const data = document.getElementById(inputId).value;
+    if (data) {
+        const listElement = document.getElementById(section + '-list');
+        if (!listElement) {
+            const newListElement = document.createElement('div');
+            newListElement.id = section + '-list';
+            document.getElementById(section + '-section').appendChild(newListElement);
+        }
 
-    // Hide the form and show the success message
-    document.getElementById(section + '-message').style.display = 'none';
-    document.getElementById(section + '-list').style.display = 'block';
-}
+        const newItem = document.createElement('div');
+        newItem.classList.add('data-item');
+        newItem.textContent = data;
+        document.getElementById(section + '-list').appendChild(newItem);
 
-// Example of how data might be added from the form (like hospital data)
-function addHospitalData() {
-    const hospitalData = document.getElementById('hospital-input').value;
-    if (hospitalData) {
-        addData('hospital', hospitalData);
+        // Reset the input field
+        document.getElementById(inputId).value = '';
+        alert(`${section.charAt(0).toUpperCase() + section.slice(1)} data added.`);
     } else {
-        alert('Please enter hospital data.');
+        alert(`Please enter ${section} data.`);
     }
 }
 
 // Example for other sections (vaccination, medication, etc.)
+function addHospitalData() {
+    addData('hospital', 'hospital-input');
+}
+
 function addVaccinationData() {
-    const vaccinationData = document.getElementById('vaccination-input').value;
-    if (vaccinationData) {
-        addData('vaccination', vaccinationData);
-    } else {
-        alert('Please enter vaccination data.');
-    }
+    addData('vaccination', 'vaccination-input');
 }
 
 function addMedicationData() {
-    const medicationData = document.getElementById('medication-input').value;
-    if (medicationData) {
-        addData('medication', medicationData);
-    } else {
-        alert('Please enter medication data.');
-    }
+    addData('medication', 'medication-input');
 }
 
 function addImplantData() {
-    const implantData = document.getElementById('implant-input').value;
-    if (implantData) {
-        addData('implant', implantData);
-    } else {
-        alert('Please enter implant data.');
-    }
+    addData('implant', 'implant-input');
 }
 
 function addAllergyData() {
-    const allergyData = document.getElementById('allergy-input').value;
-    if (allergyData) {
-        addData('allergy', allergyData);
-    } else {
-        alert('Please enter allergy data.');
-    }
+    addData('allergy', 'allergy-input');
 }
 
 function addAppointmentData() {
-    const appointmentData = document.getElementById('appointment-input').value;
-    if (appointmentData) {
-        addData('appointment', appointmentData);
-    } else {
-        alert('Please enter appointment data.');
-    }
+    addData('appointment', 'appointment-input');
 }
 
 function addDisorderData() {
-    const disorderData = document.getElementById('disorder-input').value;
-    if (disorderData) {
-        addData('disorder', disorderData);
-    } else {
-        alert('Please enter disorder data.');
-    }
+    addData('disorder', 'disorder-input');
 }
 
 function addInsuranceData() {
-    const insuranceData = document.getElementById('insurance-input').value;
-    if (insuranceData) {
-        addData('insurance', insuranceData);
-    } else {
-        alert('Please enter insurance data.');
-    }
+    addData('insurance', 'insurance-input');
 }
