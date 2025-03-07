@@ -3,99 +3,107 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Modern font */
 }
 
 /* Body Styles */
 body {
-    background-color: #f4f4f4;
+    background-color: #f8f9fa; /* Lighter background */
     color: #333;
     line-height: 1.6;
     font-size: 16px;
     margin: 0;
     padding: 20px;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
+/* Header Styles */
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 3rem; /* Larger header */
+    font-weight: 700; /* Bold for emphasis */
+    color: #222; /* Darker color for header */
+    letter-spacing: 1px; /* Add a little spacing */
+    transition: color 0.3s ease;
 }
 
+/* Footer Styles */
 footer {
     text-align: center;
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #666;
+    margin-top: 50px;
+    font-size: 0.95rem;
+    color: #6c757d;
+    transition: color 0.3s ease;
 }
 
 /* Section Styles */
 section {
     background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15); /* Hover effect for section */
+    transform: translateY(-5px); /* Subtle lift effect */
 }
 
 section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    margin-bottom: 20px;
     color: #333;
+    font-weight: 600; /* Bold for emphasis */
 }
 
+/* Form Styles */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 form input, form select, form textarea, form button {
     font-size: 1rem;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
     border: 1px solid #ccc;
+    transition: all 0.3s ease;
 }
 
 form input[type="file"] {
-    padding: 5px;
+    padding: 8px;
 }
 
 form textarea {
-    height: 100px;
+    height: 120px;
     resize: none;
 }
 
+/* Form Button Styles */
 form button {
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button:hover {
     background-color: #45a049;
+    transform: scale(1.05); /* Button scale effect */
 }
 
-form select {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ccc;
-}
-
-form input[type="date"] {
-    background-color: #fff;
-    border: 1px solid #ccc;
-}
-
-form input[type="text"], form input[type="date"] {
-    background-color: #fff;
-    color: #333;
+form button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(76, 175, 80, 0.5); /* Focus shadow */
 }
 
 /* Form Inputs (Error or Focus States) */
@@ -107,15 +115,15 @@ form input:focus, form select:focus, form textarea:focus {
 /* Responsive Design */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 15px;
     }
 
     header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     section {
-        padding: 15px;
+        padding: 25px;
     }
 
     form button {
@@ -125,42 +133,56 @@ form input:focus, form select:focus, form textarea:focus {
 
 @media (max-width: 480px) {
     body {
-        padding: 5px;
-    }
-
-    header h1 {
-        font-size: 1.5rem;
-    }
-
-    section {
         padding: 10px;
     }
 
+    header h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 20px;
+    }
+
     form button {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 }
 
 /* List Styles */
 #hospital-list, #allergy-list, #disorder-list, #appointment-list, #implant-list, #medication-list, #insurance-list {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #hospital-list div, #allergy-list div, #disorder-list div, #appointment-list div, #implant-list div, #medication-list div, #insurance-list div {
-    padding: 10px;
+    padding: 15px;
     background-color: #f9f9f9;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 15px;
+    border-radius: 8px;
     border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#hospital-list div:hover, #allergy-list div:hover, #disorder-list div:hover, #appointment-list div:hover, #implant-list div:hover, #medication-list div:hover, #insurance-list div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Hover effect */
 }
 
 /* Result Display for Questionnaires */
 #anxiety-result, #depression-result {
     margin-top: 20px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
     border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#anxiety-result p, #depression-result p {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
 }
 
 /* Accessibility Styles */
@@ -176,6 +198,7 @@ a:focus, button:focus {
 a {
     color: #4CAF50;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
