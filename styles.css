@@ -19,8 +19,12 @@ body {
 
 /* Header Styles */
 header {
-    text-align: center;
+    background-color: #fff;
+    padding: 20px 0;
     margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for modern look */
+    text-align: center;
+    border-radius: 10px;
 }
 
 header h1 {
@@ -28,16 +32,49 @@ header h1 {
     font-weight: 700; /* Bold for emphasis */
     color: #222; /* Darker color for header */
     letter-spacing: 1px; /* Add a little spacing */
+    margin-bottom: 15px; /* Add spacing below the title */
     transition: color 0.3s ease;
+}
+
+/* Navigation (if needed) */
+header nav {
+    margin-top: 20px;
+}
+
+header nav a {
+    font-size: 1.1rem;
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #45a049;
 }
 
 /* Footer Styles */
 footer {
+    background-color: #fff;
     text-align: center;
     margin-top: 50px;
+    padding: 20px 0;
     font-size: 0.95rem;
     color: #6c757d;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for footer */
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
     transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #45a049;
 }
 
 /* Section Styles */
