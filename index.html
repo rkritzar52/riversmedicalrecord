@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Health Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Patient Health Dashboard</h1>
+  </header>
+
+  <!-- Dashboard Overview Section -->
+  <div class="dashboard">
+    <section class="health-overview">
+      <h2>Health Overview</h2>
+      <p><strong>Weight:</strong> 75kg</p>
+      <p><strong>Blood Pressure:</strong> 120/80 mmHg</p>
+      <p><strong>Heart Rate:</strong> 72 bpm</p>
+    </section>
+
+    <!-- Upcoming Appointments Section -->
+    <section class="appointments">
+      <h2>Upcoming Appointments</h2>
+      <ul id="appointmentsList">
+        <!-- Dynamic content will be added here -->
+      </ul>
+      <button id="addAppointmentButton">Book an Appointment</button>
+    </section>
+
+    <!-- Recent Medical Records Section -->
+    <section class="medical-records">
+      <h2>Recent Medical Records</h2>
+      <ul id="medicalRecordsList">
+        <!-- Dynamic content will be added here -->
+      </ul>
+      <button id="addRecordButton">Add Medical Record</button>
+    </section>
+
+    <!-- Health Reminders Section -->
+    <section class="health-reminders">
+      <h2>Health Reminders</h2>
+      <ul id="remindersList">
+        <!-- Dynamic content will be added here -->
+      </ul>
+      <button id="addReminderButton">Add Reminder</button>
+    </section>
+  </div>
+
+  <!-- Modal Forms for Adding Data -->
+
+  <!-- Appointment Form Modal -->
+  <div id="appointmentFormModal" class="form-modal">
+    <div class="modal-content">
+      <h2>Book Appointment</h2>
+      <form id="appointmentForm">
+        <input type="text" id="doctor" placeholder="Doctor's Name" required>
+        <input type="date" id="appointmentDate" required>
+        <input type="time" id="appointmentTime" required>
+        <textarea id="reason" placeholder="Reason for Visit"></textarea>
+        <button type="submit">Book Appointment</button>
+        <button type="button" class="closeModal">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Medical Record Form Modal -->
+  <div id="medicalRecordFormModal" class="form-modal">
+    <div class="modal-content">
+      <h2>Add Medical Record</h2>
+      <form id="medicalRecordForm">
+        <input type="text" id="diagnosis" placeholder="Diagnosis" required>
+        <input type="date" id="dateDiagnosed" required>
+        <input type="text" id="diagnosedBy" placeholder="Diagnosed By" required>
+        <input type="text" id="whereDiagnosed" placeholder="Where Diagnosed" required>
+        <textarea id="description" placeholder="Description"></textarea>
+        <button type="submit">Add Record</button>
+        <button type="button" class="closeModal">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Reminder Form Modal -->
+  <div id="reminderFormModal" class="form-modal">
+    <div class="modal-content">
+      <h2>Set Health Reminder</h2>
+      <form id="reminderForm">
+        <input type="text" id="reminderText" placeholder="Reminder Text" required>
+        <input type="date" id="reminderDate" required>
+        <button type="submit">Set Reminder</button>
+        <button type="button" class="closeModal">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
