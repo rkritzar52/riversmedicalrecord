@@ -1,110 +1,183 @@
-/* General Body and Layout */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  color: #333;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
 }
 
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-h1 {
-  margin: 0;
+header h1 {
+    font-size: 2.5rem;
+    color: #333;
 }
 
-/* Dashboard Layout */
-.dashboard {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #666;
 }
 
+/* Section Styles */
 section {
-  margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-ul li {
-  margin: 5px 0;
+form input, form select, form textarea, form button {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+form input[type="file"] {
+    padding: 5px;
 }
 
-button:hover {
-  background-color: #0056b3;
+form textarea {
+    height: 100px;
+    resize: none;
 }
 
-/* Modal Forms */
-.form-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  max-width: 90%;
+form button:hover {
+    background-color: #45a049;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+form select {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
 }
 
-textarea {
-  height: 80px;
+form input[type="date"] {
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 
-button.closeModal {
-  background-color: #dc3545;
-  margin-top: 10px;
+form input[type="text"], form input[type="date"] {
+    background-color: #fff;
+    color: #333;
 }
 
-button.closeModal:hover {
-  background-color: #c82333;
+/* Form Inputs (Error or Focus States) */
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
 }
 
-button[type="submit"] {
-  background-color: #28a745;
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    form button {
+        font-size: 1.1rem;
+    }
 }
 
-button[type="submit"]:hover {
-  background-color: #218838;
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    form button {
+        font-size: 1rem;
+    }
+}
+
+/* List Styles */
+#hospital-list, #allergy-list, #disorder-list, #appointment-list, #implant-list, #medication-list, #insurance-list {
+    margin-top: 20px;
+}
+
+#hospital-list div, #allergy-list div, #disorder-list div, #appointment-list div, #implant-list div, #medication-list div, #insurance-list div {
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Result Display for Questionnaires */
+#anxiety-result, #depression-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Accessibility Styles */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Focus for accessibility */
+a:focus, button:focus {
+    outline: 3px solid #4CAF50;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #45a049;
 }
