@@ -3,252 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Management</title>
+    <title>Health Questionnaire</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Health Management Dashboard</h1>
-    </header>
-    
-    <main>
-        <!-- Hospital Visits Section -->
-        <section id="hospital-visits">
-            <h2>Hospital Visits</h2>
-            <form id="hospital-form">
-                <input type="text" id="visit-date" placeholder="Date of Visit" required>
-                <input type="text" id="hospital-name" placeholder="Hospital Name" required>
-                <textarea id="reason-for-visit" placeholder="Reason for Visit" required></textarea>
-                <textarea id="treatment-provided" placeholder="Treatment Provided" required></textarea>
-                <input type="text" id="doctor-notes" placeholder="Doctor's Notes" required>
-                <input type="text" id="follow-up" placeholder="Follow-Up Appointments">
-                <input type="file" id="documents-upload">
-                <select id="visit-status" required>
-                    <option value="completed">Completed</option>
-                    <option value="pending">Pending</option>
-                    <option value="follow-up">Follow-up Needed</option>
-                </select>
-                <button type="submit">Add Hospital Visit</button>
-            </form>
+
+    <div id="health-section">
+
+        <!-- Hospital Section -->
+        <div id="hospital-section" class="data-section">
+            <h2>Hospital Data</h2>
+            <div id="hospital-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('hospital')">Add Data</button>
             <div id="hospital-list"></div>
-        </section>
+        </div>
 
-        <!-- Allergies Section -->
-        <section id="allergies">
-            <h2>Allergies</h2>
-            <form id="allergy-form">
-                <input type="text" id="allergy-name" placeholder="Allergy Name" required>
-                <textarea id="allergy-symptoms" placeholder="Symptoms" required></textarea>
-                <textarea id="allergy-treatment" placeholder="Treatment" required></textarea>
-                <button type="submit">Add Allergy</button>
-            </form>
-            <div id="allergy-list"></div>
-        </section>
+        <!-- Vaccination Section -->
+        <div id="vaccination-section" class="data-section">
+            <h2>Vaccination Data</h2>
+            <div id="vaccination-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('vaccination')">Add Data</button>
+            <div id="vaccination-list"></div>
+        </div>
 
-        <!-- Health Disorders Section -->
-        <section id="health-disorders">
-            <h2>Health Disorders</h2>
-            <form id="health-disorder-form">
-                <input type="text" id="disorder-name" placeholder="Disorder Name" required>
-                <textarea id="disorder-description" placeholder="Description" required></textarea>
-                <textarea id="disorder-treatment" placeholder="Treatment" required></textarea>
-                <button type="submit">Add Health Disorder</button>
-            </form>
-            <div id="disorder-list"></div>
-        </section>
-
-        <!-- Upcoming Appointments Section -->
-        <section id="upcoming-appointments">
-            <h2>Upcoming Appointments</h2>
-            <form id="appointment-form">
-                <input type="date" id="appointment-date" required>
-                <input type="text" id="appointment-doctor" placeholder="Doctor Name" required>
-                <input type="text" id="appointment-location" placeholder="Location" required>
-                <textarea id="appointment-reason" placeholder="Reason for Visit" required></textarea>
-                <button type="submit">Add Appointment</button>
-            </form>
-            <div id="appointment-list"></div>
-        </section>
-
-        <!-- Implants Section -->
-        <section id="implants">
-            <h2>Implants</h2>
-            <form id="implant-form">
-                <input type="text" id="implant-name" placeholder="Implant Name" required>
-                <input type="date" id="implant-date" required>
-                <textarea id="implant-description" placeholder="Description" required></textarea>
-                <button type="submit">Add Implant</button>
-            </form>
-            <div id="implant-list"></div>
-        </section>
-
-        <!-- Medications Section -->
-        <section id="medications">
-            <h2>Medications</h2>
-            <form id="medication-form">
-                <input type="text" id="medication-name" placeholder="Medication Name" required>
-                <input type="text" id="medication-dose" placeholder="Dosage" required>
-                <input type="date" id="medication-start-date" required>
-                <textarea id="medication-instructions" placeholder="Instructions" required></textarea>
-                <button type="submit">Add Medication</button>
-            </form>
+        <!-- Medication Section -->
+        <div id="medication-section" class="data-section">
+            <h2>Medication Data</h2>
+            <div id="medication-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('medication')">Add Data</button>
             <div id="medication-list"></div>
-        </section>
+        </div>
+
+        <!-- Implant Section -->
+        <div id="implant-section" class="data-section">
+            <h2>Implant Data</h2>
+            <div id="implant-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('implant')">Add Data</button>
+            <div id="implant-list"></div>
+        </div>
+
+        <!-- Allergy Section -->
+        <div id="allergy-section" class="data-section">
+            <h2>Allergy Data</h2>
+            <div id="allergy-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('allergy')">Add Data</button>
+            <div id="allergy-list"></div>
+        </div>
+
+        <!-- Appointment Section -->
+        <div id="appointment-section" class="data-section">
+            <h2>Appointment Data</h2>
+            <div id="appointment-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('appointment')">Add Data</button>
+            <div id="appointment-list"></div>
+        </div>
+
+        <!-- Health Disorder Section -->
+        <div id="disorder-section" class="data-section">
+            <h2>Health Disorder Data</h2>
+            <div id="disorder-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('disorder')">Add Data</button>
+            <div id="disorder-list"></div>
+        </div>
 
         <!-- Insurance Section -->
-        <section id="insurance">
-            <h2>Insurance</h2>
-            <form id="insurance-form">
-                <input type="text" id="insurance-provider" placeholder="Provider Name" required>
-                <input type="text" id="insurance-policy" placeholder="Policy Number" required>
-                <input type="date" id="insurance-expiry" required>
-                <textarea id="insurance-notes" placeholder="Additional Notes"></textarea>
-                <button type="submit">Add Insurance</button>
-            </form>
+        <div id="insurance-section" class="data-section">
+            <h2>Insurance Data</h2>
+            <div id="insurance-message">Currently no data, click below to add data.</div>
+            <button onclick="showForm('insurance')">Add Data</button>
             <div id="insurance-list"></div>
-        </section>
+        </div>
 
         <!-- Anxiety Questionnaire Section -->
-        <section id="anxiety-questionnaire">
-            <h2>Anxiety Risk Questionnaire</h2>
-            <form id="anxiety-form">
-                <label>Feeling nervous, anxious, or on edge</label>
-                <select id="anxiety-q1" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
+        <div id="anxiety-section" class="data-section">
+            <h2>Anxiety Questionnaire</h2>
+            <div id="anxiety-message">Currently no data, click below to add data.</div>
+            <button onclick="showAnxietyForm()">Add Anxiety Data</button>
+            <div id="anxiety-list"></div>
 
-                <label>Not being able to stop or control worrying</label>
-                <select id="anxiety-q2" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Worrying too much about different things</label>
-                <select id="anxiety-q3" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Trouble relaxing</label>
-                <select id="anxiety-q4" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Being so restless that it is hard to sit still</label>
-                <select id="anxiety-q5" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Becoming easily annoyed or irritable</label>
-                <select id="anxiety-q6" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Feeling afraid as if something awful might happen</label>
-                <select id="anxiety-q7" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <button type="submit">Submit Anxiety Questionnaire</button>
-            </form>
-            <div id="anxiety-result"></div>
-        </section>
+            <!-- Anxiety Questions -->
+            <div id="anxiety-questions" style="display: none;">
+                <h3>Please answer the following anxiety-related questions:</h3>
+                <div class="anxiety-question" data-question="1">
+                    <p>Do you often feel nervous or anxious?</p>
+                    <label><input type="radio" name="anxiety1" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety1" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety1" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="2">
+                    <p>Do you have trouble controlling your worries?</p>
+                    <label><input type="radio" name="anxiety2" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety2" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety2" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="3">
+                    <p>Do you often feel restless or on edge?</p>
+                    <label><input type="radio" name="anxiety3" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety3" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety3" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="4">
+                    <p>Do you feel fatigued due to anxiety?</p>
+                    <label><input type="radio" name="anxiety4" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety4" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety4" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="5">
+                    <p>Do you experience physical symptoms such as headaches, muscle tension, or stomachaches?</p>
+                    <label><input type="radio" name="anxiety5" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety5" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety5" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="6">
+                    <p>Do you often have trouble sleeping due to anxiety?</p>
+                    <label><input type="radio" name="anxiety6" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety6" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety6" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="7">
+                    <p>Do you avoid situations that make you anxious?</p>
+                    <label><input type="radio" name="anxiety7" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety7" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety7" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="8">
+                    <p>Do you often experience panic attacks?</p>
+                    <label><input type="radio" name="anxiety8" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety8" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety8" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="9">
+                    <p>Do you often feel dizzy or lightheaded due to anxiety?</p>
+                    <label><input type="radio" name="anxiety9" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety9" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety9" value="3"> Often</label>
+                </div>
+                <div class="anxiety-question" data-question="10">
+                    <p>Do you frequently feel a sense of impending doom or fear of danger?</p>
+                    <label><input type="radio" name="anxiety10" value="1"> Not at all</label>
+                    <label><input type="radio" name="anxiety10" value="2"> Sometimes</label>
+                    <label><input type="radio" name="anxiety10" value="3"> Often</label>
+                </div>
+                <button onclick="submitAnxietyQuestionnaire()">Submit Anxiety Questionnaire</button>
+            </div>
+        </div>
 
         <!-- Depression Questionnaire Section -->
-        <section id="depression-questionnaire">
-            <h2>Depression Risk Questionnaire</h2>
-            <form id="depression-form">
-                <label>Feeling down, depressed, or hopeless</label>
-                <select id="depression-q1" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
+        <div id="depression-section" class="data-section">
+            <h2>Depression Questionnaire</h2>
+            <div id="depression-message">Currently no data, click below to add data.</div>
+            <button onclick="showDepressionForm()">Add Depression Data</button>
+            <div id="depression-list"></div>
 
-                <label>Little interest or pleasure in doing things</label>
-                <select id="depression-q2" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
+            <!-- Depression Questions -->
+            <div id="depression-questions" style="display: none;">
+                <h3>Please answer the following depression-related questions:</h3>
+                <div class="depression-question" data-question="1">
+                    <p>Do you often feel down or hopeless?</p>
+                    <label><input type="radio" name="depression1" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression1" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression1" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="2">
+                    <p>Do you lose interest in things you used to enjoy?</p>
+                    <label><input type="radio" name="depression2" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression2" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression2" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="3">
+                    <p>Do you feel tired or have little energy?</p>
+                    <label><input type="radio" name="depression3" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression3" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression3" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="4">
+                    <p>Do you experience trouble sleeping (either sleeping too much or too little)?</p>
+                    <label><input type="radio" name="depression4" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression4" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression4" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="5">
+                    <p>Do you feel guilty or worthless?</p>
+                    <label><input type="radio" name="depression5" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression5" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression5" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="6">
+                    <p>Do you have trouble concentrating on tasks?</p>
+                    <label><input type="radio" name="depression6" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression6" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression6" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="7">
+                    <p>Do you have thoughts of death or suicide?</p>
+                    <label><input type="radio" name="depression7" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression7" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression7" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="8">
+                    <p>Do you experience physical symptoms like headaches or stomachaches without a clear cause?</p>
+                    <label><input type="radio" name="depression8" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression8" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression8" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="9">
+                    <p>Do you experience changes in your appetite or weight?</p>
+                    <label><input type="radio" name="depression9" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression9" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression9" value="3"> Often</label>
+                </div>
+                <div class="depression-question" data-question="10">
+                    <p>Do you often feel as if life is not worth living?</p>
+                    <label><input type="radio" name="depression10" value="1"> Not at all</label>
+                    <label><input type="radio" name="depression10" value="2"> Sometimes</label>
+                    <label><input type="radio" name="depression10" value="3"> Often</label>
+                </div>
+                <button onclick="submitDepressionQuestionnaire()">Submit Depression Questionnaire</button>
+            </div>
+        </div>
+    </div>
 
-                <label>Feeling tired or having little energy</label>
-                <select id="depression-q3" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
+    <!-- Popup for viewing/editing data -->
+    <div id="popup">
+        <div id="popup-content">
+            <h3 id="popup-title"></h3>
+            <p id="popup-details"></p>
+            <button id="popup-edit">Edit</button>
+            <button id="popup-delete">Delete</button>
+            <button id="popup-close">Close</button>
+        </div>
+    </div>
 
-                <label>Poor appetite or overeating</label>
-                <select id="depression-q4" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Feeling bad about yourself — or that you are a failure or have let yourself or your family down</label>
-                <select id="depression-q5" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Trouble concentrating on things, such as reading the newspaper or watching television</label>
-                <select id="depression-q6" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Moving or speaking so slowly that other people could have noticed. Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual</label>
-                <select id="depression-q7" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <label>Thoughts that you would be better off dead or of hurting yourself in some way</label>
-                <select id="depression-q8" required>
-                    <option value="0">Not at all</option>
-                    <option value="1">Several Days</option>
-                    <option value="2">More than half of the days</option>
-                    <option value="3">Nearly every day</option>
-                </select>
-
-                <button type="submit">Submit Depression Questionnaire</button>
-            </form>
-            <div id="depression-result"></div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Health Management Dashboard &copy; 2025</p>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
