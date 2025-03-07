@@ -1,99 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patient Health Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Management</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Patient Health Dashboard</h1>
-  </header>
+    <header>
+        <h1>Health Management Dashboard</h1>
+    </header>
+    
+    <main>
+        <!-- Hospital Visits Section -->
+        <section id="hospital-visits">
+            <h2>Hospital Visits</h2>
+            <form id="hospital-form">
+                <input type="text" id="visit-date" placeholder="Date of Visit" required>
+                <input type="text" id="hospital-name" placeholder="Hospital Name" required>
+                <textarea id="reason-for-visit" placeholder="Reason for Visit" required></textarea>
+                <textarea id="treatment-provided" placeholder="Treatment Provided" required></textarea>
+                <input type="text" id="doctor-notes" placeholder="Doctor's Notes" required>
+                <input type="text" id="follow-up" placeholder="Follow-Up Appointments">
+                <input type="file" id="documents-upload">
+                <select id="visit-status" required>
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                    <option value="follow-up">Follow-up Needed</option>
+                </select>
+                <button type="submit">Add Hospital Visit</button>
+            </form>
+            <div id="hospital-list"></div>
+        </section>
 
-  <!-- Dashboard Overview Section -->
-  <div class="dashboard">
-    <section class="health-overview">
-      <h2>Health Overview</h2>
-      <p><strong>Weight:</strong> 75kg</p>
-      <p><strong>Blood Pressure:</strong> 120/80 mmHg</p>
-      <p><strong>Heart Rate:</strong> 72 bpm</p>
-    </section>
+        <!-- Allergies Section -->
+        <section id="allergies">
+            <h2>Allergies</h2>
+            <form id="allergy-form">
+                <input type="text" id="allergy-name" placeholder="Allergy Name" required>
+                <textarea id="allergy-symptoms" placeholder="Symptoms" required></textarea>
+                <textarea id="allergy-treatment" placeholder="Treatment" required></textarea>
+                <button type="submit">Add Allergy</button>
+            </form>
+            <div id="allergy-list"></div>
+        </section>
 
-    <!-- Upcoming Appointments Section -->
-    <section class="appointments">
-      <h2>Upcoming Appointments</h2>
-      <ul id="appointmentsList">
-        <!-- Dynamic content will be added here -->
-      </ul>
-      <button id="addAppointmentButton">Book an Appointment</button>
-    </section>
+        <!-- Health Disorders Section -->
+        <section id="health-disorders">
+            <h2>Health Disorders</h2>
+            <form id="health-disorder-form">
+                <input type="text" id="disorder-name" placeholder="Disorder Name" required>
+                <textarea id="disorder-description" placeholder="Description" required></textarea>
+                <textarea id="disorder-treatment" placeholder="Treatment" required></textarea>
+                <button type="submit">Add Health Disorder</button>
+            </form>
+            <div id="disorder-list"></div>
+        </section>
 
-    <!-- Recent Medical Records Section -->
-    <section class="medical-records">
-      <h2>Recent Medical Records</h2>
-      <ul id="medicalRecordsList">
-        <!-- Dynamic content will be added here -->
-      </ul>
-      <button id="addRecordButton">Add Medical Record</button>
-    </section>
+        <!-- Upcoming Appointments Section -->
+        <section id="upcoming-appointments">
+            <h2>Upcoming Appointments</h2>
+            <form id="appointment-form">
+                <input type="date" id="appointment-date" required>
+                <input type="text" id="appointment-doctor" placeholder="Doctor Name" required>
+                <input type="text" id="appointment-location" placeholder="Location" required>
+                <textarea id="appointment-reason" placeholder="Reason for Visit" required></textarea>
+                <button type="submit">Add Appointment</button>
+            </form>
+            <div id="appointment-list"></div>
+        </section>
 
-    <!-- Health Reminders Section -->
-    <section class="health-reminders">
-      <h2>Health Reminders</h2>
-      <ul id="remindersList">
-        <!-- Dynamic content will be added here -->
-      </ul>
-      <button id="addReminderButton">Add Reminder</button>
-    </section>
-  </div>
+        <!-- Implants Section -->
+        <section id="implants">
+            <h2>Implants</h2>
+            <form id="implant-form">
+                <input type="text" id="implant-name" placeholder="Implant Name" required>
+                <input type="date" id="implant-date" required>
+                <textarea id="implant-description" placeholder="Description" required></textarea>
+                <button type="submit">Add Implant</button>
+            </form>
+            <div id="implant-list"></div>
+        </section>
 
-  <!-- Modal Forms for Adding Data -->
+        <!-- Medications Section -->
+        <section id="medications">
+            <h2>Medications</h2>
+            <form id="medication-form">
+                <input type="text" id="medication-name" placeholder="Medication Name" required>
+                <input type="text" id="medication-dose" placeholder="Dosage" required>
+                <input type="date" id="medication-start-date" required>
+                <textarea id="medication-instructions" placeholder="Instructions" required></textarea>
+                <button type="submit">Add Medication</button>
+            </form>
+            <div id="medication-list"></div>
+        </section>
 
-  <!-- Appointment Form Modal -->
-  <div id="appointmentFormModal" class="form-modal">
-    <div class="modal-content">
-      <h2>Book Appointment</h2>
-      <form id="appointmentForm">
-        <input type="text" id="doctor" placeholder="Doctor's Name" required>
-        <input type="date" id="appointmentDate" required>
-        <input type="time" id="appointmentTime" required>
-        <textarea id="reason" placeholder="Reason for Visit"></textarea>
-        <button type="submit">Book Appointment</button>
-        <button type="button" class="closeModal">Close</button>
-      </form>
-    </div>
-  </div>
+        <!-- Insurance Section -->
+        <section id="insurance">
+            <h2>Insurance</h2>
+            <form id="insurance-form">
+                <input type="text" id="insurance-provider" placeholder="Provider Name" required>
+                <input type="text" id="insurance-policy" placeholder="Policy Number" required>
+                <input type="date" id="insurance-expiry" required>
+                <textarea id="insurance-notes" placeholder="Additional Notes"></textarea>
+                <button type="submit">Add Insurance</button>
+            </form>
+            <div id="insurance-list"></div>
+        </section>
 
-  <!-- Medical Record Form Modal -->
-  <div id="medicalRecordFormModal" class="form-modal">
-    <div class="modal-content">
-      <h2>Add Medical Record</h2>
-      <form id="medicalRecordForm">
-        <input type="text" id="diagnosis" placeholder="Diagnosis" required>
-        <input type="date" id="dateDiagnosed" required>
-        <input type="text" id="diagnosedBy" placeholder="Diagnosed By" required>
-        <input type="text" id="whereDiagnosed" placeholder="Where Diagnosed" required>
-        <textarea id="description" placeholder="Description"></textarea>
-        <button type="submit">Add Record</button>
-        <button type="button" class="closeModal">Close</button>
-      </form>
-    </div>
-  </div>
+        <!-- Anxiety Questionnaire Section -->
+        <section id="anxiety-questionnaire">
+            <h2>Anxiety Risk Questionnaire</h2>
+            <form id="anxiety-form">
+                <label>Feeling nervous, anxious, or on edge</label>
+                <select id="anxiety-q1" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
 
-  <!-- Reminder Form Modal -->
-  <div id="reminderFormModal" class="form-modal">
-    <div class="modal-content">
-      <h2>Set Health Reminder</h2>
-      <form id="reminderForm">
-        <input type="text" id="reminderText" placeholder="Reminder Text" required>
-        <input type="date" id="reminderDate" required>
-        <button type="submit">Set Reminder</button>
-        <button type="button" class="closeModal">Close</button>
-      </form>
-    </div>
-  </div>
+                <label>Not being able to stop or control worrying</label>
+                <select id="anxiety-q2" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
 
-  <script src="script.js"></script>
+                <label>Worrying too much about different things</label>
+                <select id="anxiety-q3" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Trouble relaxing</label>
+                <select id="anxiety-q4" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Being so restless that it is hard to sit still</label>
+                <select id="anxiety-q5" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Becoming easily annoyed or irritable</label>
+                <select id="anxiety-q6" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Feeling afraid as if something awful might happen</label>
+                <select id="anxiety-q7" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <button type="submit">Submit Anxiety Questionnaire</button>
+            </form>
+            <div id="anxiety-result"></div>
+        </section>
+
+        <!-- Depression Questionnaire Section -->
+        <section id="depression-questionnaire">
+            <h2>Depression Risk Questionnaire</h2>
+            <form id="depression-form">
+                <label>Feeling down, depressed, or hopeless</label>
+                <select id="depression-q1" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Little interest or pleasure in doing things</label>
+                <select id="depression-q2" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Feeling tired or having little energy</label>
+                <select id="depression-q3" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Poor appetite or overeating</label>
+                <select id="depression-q4" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Feeling bad about yourself — or that you are a failure or have let yourself or your family down</label>
+                <select id="depression-q5" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Trouble concentrating on things, such as reading the newspaper or watching television</label>
+                <select id="depression-q6" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Moving or speaking so slowly that other people could have noticed. Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual</label>
+                <select id="depression-q7" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <label>Thoughts that you would be better off dead or of hurting yourself in some way</label>
+                <select id="depression-q8" required>
+                    <option value="0">Not at all</option>
+                    <option value="1">Several Days</option>
+                    <option value="2">More than half of the days</option>
+                    <option value="3">Nearly every day</option>
+                </select>
+
+                <button type="submit">Submit Depression Questionnaire</button>
+            </form>
+            <div id="depression-result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Health Management Dashboard &copy; 2025</p>
+    </footer>
 </body>
 </html>
